@@ -1,0 +1,26 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="container mt-3">
+        <div class="row centered">
+            {% for offer in list_of_accommodations %}
+
+                <div class="card  col-lg-4" style="width: 16rem;
+                display: flex">
+                    <img src="/media/{{ offer.image }}"
+                         class="card-img-top filters__img" alt="...">
+                    <div class="card-body fa fa-align-justify">
+                        <h5 class="card-title">{{ offer.name|title }}</h5>
+                        <p class="card-text">{{ offer.region|title }}</p>
+                        <p class="card-text">{{ offer.price }} за сутки.</p>
+                        <a href="{% url 'acc:accommodation' offer.pk %}"
+                           class="btn btn-danger">Подробнее</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
