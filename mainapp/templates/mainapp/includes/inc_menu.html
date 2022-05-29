@@ -24,6 +24,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'auth:edit' %}">профиль</a>
                             <a class="dropdown-item" href="{% url 'basket:view' %}">корзина</a>
+                            <a class="dropdown-item" href="{% url 'order:orders_list' %}">заказы</a>
 
 
                             {% if user.is_superuser %}

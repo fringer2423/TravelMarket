@@ -1,0 +1,25 @@
+{% extends "ordersapp/base.html" %}
+{% load static %}
+{% load tagz %}
+
+{% block content %}
+    {% include 'ordersapp/includes/inc_order_summary.html' %}
+    <div class="basket_list">
+        {% for item in object.orderitems.select_related %}
+            <div class="basket_record">
+                <img src="{{ item.accommodation.image|media_acc }}" alt="{{ item.accommodation.short_desc }}">
+                <span class="category_name">{{ item.accommodation.country.name }}</span>
+                <span class="product_name">{{ item.accommodation.name }}</span>
+                <span class="product_price">{{ item.accommodation.price }}&nbspруб</span>
+                <span class="product_quantitiy">x {{ item.nights }}
+                {% if item.nights == 1 %} ночь
+                {% elif 1 < item.nights and item.nights < 5 %} ночи
+                {% else %} ночей
+                {% endif %}</span>
+                <span class="product_cost"> = {{ item.get_accommodation_cost }}&nbspруб</span>
+            </div>
+        {% endfor %}
+    </div>
+    {% include 'ordersapp/includes/inc_order_actions.html' %}
+
+{% endblock %}
