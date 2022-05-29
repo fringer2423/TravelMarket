@@ -17,6 +17,12 @@
                     <p>стоимость за сутки: {{ accommodation.price }}</p>
                     <br><br><br><br>
                 </div>
+                <div class="float-right">
+                    <button class="btn  btn-danger ">
+                        <a style="color: white; text-decoration: none"
+                           href="{% url 'basket:add' accommodation.pk %}">Забронировать</a>
+                    </button>
+                </div>
             </div>
 
         </div>
