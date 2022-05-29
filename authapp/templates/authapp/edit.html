@@ -1,0 +1,33 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container form-group row">
+        <div class="user_avatar float-right">
+            <img src="/media/{{ user.avatar|default:'users_avatars/default.jpg' }}">
+        </div>
+        <div>
+            <form class="col-lg-offset-4  form-horizontal "
+                  action="{% url 'auth:edit' %}" method="post"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.as_p }}
+                {{ profile_form.as_p }}
+                <input class="form-control btn btn-outline-success"
+                       type="submit" value="сохранить">
+
+                <button class="btn btn-outline-warning
+                form-control col-lg-offset-4 last">
+                    <a style="color: black; text-decoration: none"
+                       href="{% url 'main' %}" class="">
+                        на главную
+                    </a>
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
